@@ -33,9 +33,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :category
-- belongs_to :prefecture
-- belongs_to :transaction,dependent::destroy
+- has_one :transaction,dependent::destroy
 
 ## Transactions table
 
@@ -43,7 +41,6 @@
 |---------|---------|-----------------------------|
 | item    |reference| null:false,foreign_key:true |
 | user    |reference| null:false,foreign_key:true |
-| address |reference| null:false,foreign_key:true |
 
 ### Association
 
@@ -59,6 +56,7 @@
 | prefecture   | integer  | null:false                  |
 | city         | integer  | null:false                  |
 | address      | string   | null:false                  |
+| building     | string   | null:false
 | phone_number | string   | null:false                  |
 | transaction  | reference| null:false,foreign_key:true |
 
