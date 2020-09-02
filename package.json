@@ -1,5 +1,5 @@
 {
-  "name": "furima_28896",
+  "name": "furima_”28896”",
   "private": true,
   "dependencies": {
     "@rails/ujs": "^6.0.0-alpha",
@@ -7,8 +7,5 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/actioncable": "^6.0.0-alpha"
   },
-  "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
-  }
+  "version": "0.1.0"
 }
