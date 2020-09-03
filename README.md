@@ -18,17 +18,18 @@
 
 ## items table
 
-|    Column     | Type      | Options                      |
-|---------------|-----------|------------------------------|
-| name          | string    | null: false                  |
-| introduction  | text      | null: false                  |
-| category_id   | integer   | null: false,foreign_key:true |
-| condition     | integer   | null: false                  |
-| price         | integer   | null: false                  |
-| delivery_fee  | integer   | null: false                  |
-| delivery_days | integer   | null: false                  |
-| prefecture_id | integer   | null: false                  |
-| user          | reference | foreign_key:true             |
+|    Column        | Type      | Options                      |
+|------------------|-----------|------------------------------|
+| name             | string    |                              |
+| introduction     | text      |                              |
+| category_id      | integer   | null: false,foreign_key:true |
+| condition        | integer   |                              |
+| price            | integer   |                              |
+| delivery_burden  | integer   |                              |
+| delivery_days    | integer   |                              |
+| prefecture_id    | integer   |                              |
+| image            | text      |                              |
+| user_id          | reference | foreign_key:true             |
 
 ### Association
 
@@ -39,8 +40,8 @@
 
 |Column   | Type    | Options                     |
 |---------|---------|-----------------------------|
-| item    |reference| null:false,foreign_key:true |
-| user    |reference| null:false,foreign_key:true |
+| item_id |reference| null:false,foreign_key:true |
+| user_id |reference| null:false,foreign_key:true |
 
 ### Association
 
@@ -48,19 +49,25 @@
 - belongs_to :user
 - has_one :address
 
-## Addresses table
+## user_cards table
 
 | Column       | Type     | Options                     |
 |--------------|----------|-----------------------------|
-| postal_code  | string   | null:false                  |
-| prefecture   | integer  | null:false                  |
-| city         | string   | null:false                  |
-| address      | string   | null:false                  |
+| postal_code  | string   |                             |
+| prefecture_id| integer  | null:false                  |
+| city         | string   |                             |
+| address      | string   |                             |
 | building     | string   |                             |
-| phone_number | string   | null:false                  |
-| transaction  | reference| null:false,foreign_key:true |
+| phone_number | string   |                             |
+| user_id      | reference| null:false,foreign_key:true |
 
 ### Association
 
 - belongs_to :transaction
 
+### user_purchases table
+
+|Column   | Type    | Options                     |
+|---------|---------|-----------------------------|
+| card_id |reference| null:false,foreign_key:true |
+| user_id |reference| null:false,foreign_key:true |
