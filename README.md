@@ -4,14 +4,13 @@
 
 |     Column      |  Type  |   Options             |
 |-----------------|--------|-----------------------|
-| id              |        |                     PK|
-| mail            | syring | unique:true,index:true|
-| nickname        | string |                       |
-| first_name      | string |                       |
-| last_name       | string |                       |
-| first_name_kana | string |                       |
-| last_name_kana  | string |                       |
-| birth_day       | date   |                       |
+| mail            | string | unique:true,index:true|
+| nickname        | string | null: false           |
+| first_name      | string | null: false           |
+| last_name       | string | null: false           |
+| first_name_kana | string | null: false           |
+| last_name_kana  | string | null: false           |
+| birth_day       | date   | null: false           |
 
 ### Association
 
@@ -22,16 +21,14 @@
 
 |    Column        | Type      | Options                      |
 |------------------|-----------|------------------------------|
-| id               |           |                            PK|
-| seller           | references| foreign_key:true             |
-| buyer            | references| foreign_key:true             |
-| name             | string    |                              |
-| introduction     | text      |                              |
+| user             | references| foreign_key:true             |
+| name             | string    | null:false                   |
+| introduction     | text      | null:false                   |
 | category         | string    | null: false                  |
 | condition        | string    | null: false                  |
-| price            | integer   |                              |
+| price            | integer   | null:false                   |
 | delivery_burden  | string    | null: false                  |
-| perpare_days     | integer   | null: false                  |
+| prepare_days     | integer   | null: false                  |
 | prefecture_code  | integer   | null: false                  |
 
 ### Association
@@ -44,7 +41,6 @@
 
 | Column            | Type     | Options                     |
 |-------------------|----------|-----------------------------|
-| id                |        PK|                           PK|
 | user_id           | integer  | null:false                  |
 | card_number       | integer  | unique:true                 |
 | expiration_term   | date     | null:false                  |
@@ -53,5 +49,5 @@
 
 ### Association
 
-- belongs_to :transaction
-
+- belongs_to :cards
+- belongs_to_active_hash :prefecture
