@@ -14,7 +14,7 @@
 ### Association
 
 - has_many :items,dependent::destroy
-- has_many :transactions
+- has_many :cards
 
 ## items table
 
@@ -28,7 +28,6 @@
 | delivery_burden  | integer   |                              |
 | delivery_days    | integer   |                              |
 | prefecture_id    | integer   |                              |
-| image            | text      |                              |
 | user_id          | reference | foreign_key:true             |
 
 ### Association
@@ -49,7 +48,7 @@
 - belongs_to :user
 - has_one :address
 
-## user_cards table
+## cards table
 
 | Column       | Type     | Options                     |
 |--------------|----------|-----------------------------|
@@ -60,14 +59,19 @@
 | building     | string   |                             |
 | phone_number | string   |                             |
 | user_id      | reference| null:false,foreign_key:true |
+| item_id      | reference| null:false,foreign_key:true |
 
 ### Association
 
 - belongs_to :transaction
 
-### user_purchases table
+## user_purchases table
 
 |Column   | Type    | Options                     |
 |---------|---------|-----------------------------|
 | card_id |reference| null:false,foreign_key:true |
 | user_id |reference| null:false,foreign_key:true |
+
+### Association
+
+- belongs_to :user
