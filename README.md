@@ -2,14 +2,16 @@
 
 ## users table
 
-|     Column      |  Type  |   Options   |
-|-----------------|--------|-------------|
-| nickname        | string | null: false |
-| first_name      | string | null: false |
-| last_name       | string | null: false |
-| first_name_kana | string | null: false |
-| last_name_kana  | string | null: false |
-| birth_day       | date   | null: false |
+|     Column      |  Type  |   Options             |
+|-----------------|--------|-----------------------|
+| id              |        |                     PK|
+| mail            | syring | unique:true,index:true|
+| nickname        | string |                       |
+| first_name      | string |                       |
+| last_name       | string |                       |
+| first_name_kana | string |                       |
+| last_name_kana  | string |                       |
+| birth_day       | date   |                       |
 
 ### Association
 
@@ -20,58 +22,36 @@
 
 |    Column        | Type      | Options                      |
 |------------------|-----------|------------------------------|
+| id               |           |                            PK|
+| seller           | references| foreign_key:true             |
+| buyer            | references| foreign_key:true             |
 | name             | string    |                              |
 | introduction     | text      |                              |
-| category_id      | integer   | null: false,foreign_key:true |
-| condition        | integer   |                              |
+| category         | string    | null: false                  |
+| condition        | string    | null: false                  |
 | price            | integer   |                              |
-| delivery_burden  | integer   |                              |
-| delivery_days    | integer   |                              |
-| prefecture_id    | integer   |                              |
-| user_id          | reference | foreign_key:true             |
+| delivery_burden  | string    | null: false                  |
+| perpare_days     | integer   | null: false                  |
+| prefecture_code  | integer   | null: false                  |
 
 ### Association
 
 - belongs_to :user
 - has_one :item_purchases,dependent::destroy
 
-## item_purchases table
-
-|Column   | Type    | Options                     |
-|---------|---------|-----------------------------|
-| item_id |reference| null:false,foreign_key:true |
-| user_id |reference| null:false,foreign_key:true |
-
-### Association
-
-- belongs_to :item
-- belongs_to :user
-- has_one :address
 
 ## cards table
 
-| Column       | Type     | Options                     |
-|--------------|----------|-----------------------------|
-| postal_code  | string   |                             |
-| prefecture_id| integer  | null:false                  |
-| city         | string   |                             |
-| address      | string   |                             |
-| building     | string   |                             |
-| phone_number | string   |                             |
-| user_id      | reference| null:false,foreign_key:true |
-| item_id      | reference| null:false,foreign_key:true |
+| Column            | Type     | Options                     |
+|-------------------|----------|-----------------------------|
+| id                |        PK|                           PK|
+| user_id           | integer  | null:false                  |
+| card_number       | integer  | unique:true                 |
+| expiration_term   | date     | null:false                  |
+| security_code     | integer  |                             |
+
 
 ### Association
 
 - belongs_to :transaction
 
-## user_purchases table
-
-|Column   | Type    | Options                     |
-|---------|---------|-----------------------------|
-| card_id |reference| null:false,foreign_key:true |
-| user_id |reference| null:false,foreign_key:true |
-
-### Association
-
-- belongs_to :user
