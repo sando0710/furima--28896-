@@ -5,6 +5,7 @@
 |     Column      |  Type  |   Options             |
 |-----------------|--------|-----------------------|
 | mail            | string | unique:true,index:true|
+| password        | string | null: false           |
 | nickname        | string | null: false           |
 | first_name      | string | null: false           |
 | last_name       | string | null: false           |
@@ -15,39 +16,48 @@
 ### Association
 
 - has_many :items,dependent::destroy
-- has_many :cards
+- has_many :historys,dependent::destroy
+
 
 ## items table
 
 |    Column        | Type      | Options                      |
 |------------------|-----------|------------------------------|
-| user             | references| foreign_key:true             |
-| name             | string    | null:false                   |
-| introduction     | text      | null:false                   |
+| user_id          | integer   | foreign_key:true             |
+| name             | string    | null: false                  |
+| introduction     | text      | null: false                  |
 | category         | string    | null: false                  |
 | condition        | string    | null: false                  |
-| price            | integer   | null:false                   |
+| price            | integer   | null: false                  |
 | delivery_burden  | string    | null: false                  |
 | prepare_days     | integer   | null: false                  |
 | prefecture_code  | integer   | null: false                  |
 
+
+
 ### Association
 
 - belongs_to :user
-- has_one :item_purchases,dependent::destroy
+- belongs_to_active_hash :prefecture
 
+## historys
 
-## cards table
-
-| Column            | Type     | Options                     |
-|-------------------|----------|-----------------------------|
-| user_id           | integer  | null:false                  |
-| card_number       | integer  | unique:true                 |
-| expiration_term   | date     | null:false                  |
-| security_code     | integer  |                             |
-
+|    Column        | Type      | Options                      |
+|------------------|-----------|------------------------------|
+| user_id          | integer   | foreign_key:true             |
+| item_id          | integer   | foreign_key:true             |
+| card_number      | integer   | unique:true                  |
+| expiration_term  | date      | null:false                   |
+| security_code    | integer   | null:false                   |
+| post_code        | string    | null:false                   |
+| prefecture_code  | integer   | null:false                   |
+| city             | string    | null:false                   |
+| address          | string    | null:false                   |
+| building         | string    | null:false                   |
+| phone_number     | integer   | null:false                   |
 
 ### Association
 
-- belongs_to :cards
+- belongs_to :user
 - belongs_to_active_hash :prefecture
+
