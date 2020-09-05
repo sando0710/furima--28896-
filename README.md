@@ -38,6 +38,10 @@
 ### Association
 
 - belongs_to :user
+- belongs_to_active_hash :category
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :delivery_barden
+- belongs_to_active_hash :prepare_day
 - belongs_to_active_hash :prefecture
 
 ## historys
@@ -52,4 +56,3 @@
 
 - belongs_to :user
 - belongs_to_active_hash :prefecture
-
