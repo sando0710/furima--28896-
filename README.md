@@ -26,10 +26,10 @@
 | user_id          | integer   | foreign_key:true             |
 | name             | string    | null: false                  |
 | introduction     | text      | null: false                  |
-| category         | string    | null: false                  |
-| condition        | string    | null: false                  |
+| category         | integer   | null: false                  |
+| condition        | integer   | null: false                  |
 | price            | integer   | null: false                  |
-| delivery_burden  | string    | null: false                  |
+| delivery_burden  | integer   | null: false                  |
 | prepare_days     | integer   | null: false                  |
 | prefecture_code  | integer   | null: false                  |
 
@@ -44,7 +44,7 @@
 - belongs_to_active_hash :prepare_day
 - belongs_to_active_hash :prefecture
 
-## historys
+## histories
 
 |    Column        | Type      | Options                      |
 |------------------|-----------|------------------------------|
