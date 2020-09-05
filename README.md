@@ -46,15 +46,7 @@
 |------------------|-----------|------------------------------|
 | user_id          | integer   | foreign_key:true             |
 | item_id          | integer   | foreign_key:true             |
-| card_number      | integer   | unique:true                  |
-| expiration_term  | date      | null:false                   |
-| security_code    | integer   | null:false                   |
-| post_code        | string    | null:false                   |
-| prefecture_code  | integer   | null:false                   |
-| city             | string    | null:false                   |
-| address          | string    | null:false                   |
-| building         | string    | null:false                   |
-| phone_number     | integer   | null:false                   |
+
 
 ### Association
 
