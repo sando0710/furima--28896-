@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items,dependent::destroy
-- has_many :historys,dependent::destroy
+- has_many :histories,dependent::destroy
 
 
 ## items table
