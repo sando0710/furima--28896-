@@ -1,6 +1,6 @@
 # DB設計
 
-## users table
+## users table (ユーザー情報)
 
 |     Column      |  Type  |   Options             |
 |-----------------|--------|-----------------------|
@@ -16,10 +16,10 @@
 ### Association
 
 - has_many :items,dependent::destroy
-- has_many :histories,dependent::destroy
+- has_many :exchanges,dependent::destroy
 
 
-## items table
+## items table (商品情報)
 
 |    Column        | Type      | Options                      |
 |------------------|-----------|------------------------------|
@@ -28,12 +28,10 @@
 | introduction     | text      | null: false                  |
 | category         | integer   | null: false                  |
 | condition        | integer   | null: false                  |
-| price            | integer   | null: false                  |
-| delivery_burden  | integer   | null: false                  |
+| delivery_burden  | string    | null: false                  |
+| prefecture_code  | string    | null: false                  |
 | prepare_days     | integer   | null: false                  |
-| prefecture_code  | integer   | null: false                  |
-
-
+| price            | integer   | null: false                  |
 
 ### Association
 
@@ -43,16 +41,35 @@
 - belongs_to_active_hash :delivery_burden
 - belongs_to_active_hash :prepare_day
 - belongs_to_active_hash :prefecture
+- has_one :exchange
 
-## histories
+## exchanges (購入管理情報)
 
 |    Column        | Type      | Options                      |
 |------------------|-----------|------------------------------|
 | user_id          | integer   | foreign_key:true             |
 | item_id          | integer   | foreign_key:true             |
+| sold_flag        | boolean   | null:false  defalut:false    |
 
 
 ### Association
 
 - belongs_to :user
+- belongs_to :item
+- has_one :shipping
+
+## shippings (配送先情報)
+
+|    Column        | Type      | Options                      |
+|------------------|-----------|------------------------------|
+| exchanges_id     | integer   | foreign_key:true             |
+| post_code        | integer   | null: false                  |
+| prefecture_code  | integer   | null: false                  |
+| city             | string    | null: false                  | 
+| address          | string    | null: false                  |
+| building         | string    | null: false                  |
+| phone_number     | integer   | null: false                  |
+### Association 
+
+- belongs_to :exchanges
 - belongs_to_active_hash :prefecture
