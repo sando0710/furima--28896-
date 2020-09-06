@@ -28,9 +28,9 @@
 | introduction     | text      | null: false                  |
 | category         | integer   | null: false                  |
 | condition        | integer   | null: false                  |
-| delivery_burden  | string    | null: false                  |
-| prefecture_code  | string    | null: false                  |
-| prepare_days     | integer   | null: false                  |
+| delivery_burden  | integer   | null: false                  |
+| prefecture_code  | integer   | null: false                  |
+| prepare_day      | integer   | null: false                  |
 | price            | integer   | null: false                  |
 
 ### Association
@@ -49,7 +49,6 @@
 |------------------|-----------|------------------------------|
 | user_id          | integer   | foreign_key:true             |
 | item_id          | integer   | foreign_key:true             |
-| sold_flag        | boolean   | null:false  defalut:false    |
 
 
 ### Association
@@ -63,13 +62,13 @@
 |    Column        | Type      | Options                      |
 |------------------|-----------|------------------------------|
 | exchanges_id     | integer   | foreign_key:true             |
-| post_code        | integer   | null: false                  |
+| post_code        | string    | null: false                  |
 | prefecture_code  | integer   | null: false                  |
 | city             | string    | null: false                  | 
 | address          | string    | null: false                  |
-| building         | string    | null: false                  |
-| phone_number     | integer   | null: false                  |
+| building         | string    |                              |
+| phone_number     | string    | null: false                  |
 ### Association 
 
-- belongs_to :exchanges
+- belongs_to :exchange
 - belongs_to_active_hash :prefecture
