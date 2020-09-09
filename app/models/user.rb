@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items, depende:destroy
-  accepts_nested_attributes_:items
+  has_many :items, dependent: :destroy
+
   has_many :exchanges, dependent: :destroy
-  
+
 end

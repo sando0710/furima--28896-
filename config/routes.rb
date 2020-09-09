@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'exchanges/index'
-  post 'exchanges/create'
+  # get 'exchanges/index'
+  # post 'exchanges/create'
   devise_for :users
   root 'items#index'
 
